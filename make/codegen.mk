@@ -11,6 +11,10 @@ endif
 proto-gen-swagger: modvendor $(BUF) $(PROTOC_GEN_SWAGGER) $(SWAGGER_COMBINE)
 	./script/protoc-gen-swagger.sh
 
+.PHONY: proto-gen-py
+proto-gen-py: modvendor
+	./script/protocgen-python.sh || true
+
 mocks: $(MOCKERY)
 	$(GO) generate ./...
 
